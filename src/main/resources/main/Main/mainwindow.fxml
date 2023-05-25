@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="mainBorderPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Main.Controller">
+    <top>
+        <VBox spacing="10" style="-fx-padding: 30">
+            <HBox spacing="10" alignment="TOP_CENTER">
+                <SplitMenuButton text="Export / Import" mnemonicParsing="false">
+                    <items>
+                        <MenuItem text="Export to PDF" onAction="#exportPdf"/>
+                        <MenuItem text="Export to XLSX" onAction="#exportXlsx"/>
+                        <MenuItem text="Import from XLSX" onAction="#importXlsx"/>
+                    </items>
+                </SplitMenuButton>
+                <SplitMenuButton text="New Data" mnemonicParsing="false">
+                    <items>
+                        <MenuItem text="New Student" onAction="#showNewStudentDialog"/>
+                        <MenuItem text="New Group" onAction="#showNewGroupDialog"/>
+                    </items>
+                </SplitMenuButton>
+                <DatePicker fx:id="datePicker"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <HBox spacing="10" alignment="TOP_CENTER">
+            <VBox style="-fx-padding: 10;" alignment="TOP_CENTER" prefHeight="400" prefWidth="200">
+                <Label text="Group List" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                <ListView fx:id="groupListView" onKeyPressed="#handleKeyPressed" style="-fx-border-color: #000000; -fx-border-width: 1;"/>
+            </VBox>
+            <VBox style="-fx-padding: 10;" alignment="TOP_CENTER">
+                <Label text="Attendance Table" style="-fx-font-size: 16; -fx-font-weight: bold;"/>
+                <TableView fx:id="studentTable" onKeyPressed="#handleKeyPressedTable" prefHeight="400" prefWidth="800" style="-fx-border-color: #000000; -fx-border-width: 1;">
+                    <columns>
+                        <TableColumn fx:id="firstNameColumn" prefWidth="75" text="Name"/>
+                        <TableColumn fx:id="lastNameColumn" prefWidth="100" text="Lastname"/>
+                        <TableColumn fx:id="studentIdColumn" prefWidth="150" text="Student ID"/>
+                    </columns>
+                </TableView>
+            </VBox>
+        </HBox>
+    </center>
+</BorderPane>
